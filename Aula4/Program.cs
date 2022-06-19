@@ -166,12 +166,11 @@ namespace Aula4
         public static void Aula04_05()
         {
             char[,] matriz = new char[3, 3];
-            char jogador1 = 'X', jogador2 = 'O', jogador = 'X', escolha;
+            char jogador1 = 'X', jogador2, jogador = 'X', escolha;
             int marcacao, aux = 1;
             bool ganhou = false;
 
             Console.WriteLine("****** JOGO DA VELHA ******");
-
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -233,41 +232,65 @@ namespace Aula4
                 Console.Write($"Jogador {aux}, escolha a posição que deseja marcar: ");
                 marcacao = int.Parse(Console.ReadLine());
 
-                // Tratar posição já marcada
-                /* 
-                {
-                    do
-                    {
-                        Console.Write($"Posição já marcada.\n" +
-                            $"Jogador {aux}, escolha a posição que deseja marcar: ");
-                        marcacao = int.Parse(Console.ReadLine());
-                    } while (marcacao == jogador1 || marcacao == jogador2);
-                }
-                */
-
                 if (aux == 1)
                     jogador = jogador1;
                 else if (aux == 2)
                     jogador = jogador2;
 
-                if (marcacao == 1 && matriz[0, 0] != jogador)
-                    matriz[0, 0] = jogador;
-                else if (marcacao == 2 && matriz[0, 1] != jogador)
-                    matriz[0, 1] = jogador;
-                else if (marcacao == 3 && matriz[0, 2] != jogador)
-                    matriz[0, 2] = jogador;
-                else if (marcacao == 4 && matriz[1, 0] != jogador)
-                    matriz[1, 0] = jogador;
-                else if (marcacao == 5 && matriz[1, 1] != jogador)
-                    matriz[1, 1] = jogador;
-                else if (marcacao == 6 && matriz[1, 2] != jogador)
-                    matriz[1, 2] = jogador;
-                else if (marcacao == 7 && matriz[2, 0] != jogador)
-                    matriz[2, 0] = jogador;
-                else if (marcacao == 8 && matriz[2, 1] != jogador)
-                    matriz[2, 1] = jogador;
-                else if (marcacao == 9 && matriz[2, 2] != jogador)
-                    matriz[2, 2] = jogador;
+                while (true)
+                {
+                    if (marcacao == 1 && matriz[0, 0] != jogador1 && matriz[0, 0] != jogador2)
+                    {
+                        matriz[0, 0] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 2 && matriz[0, 1] != jogador1 && matriz[0, 1] != jogador2)
+                    {
+                        matriz[0, 1] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 3 && matriz[0, 2] != jogador1 && matriz[0, 2] != jogador2)
+                    {
+                        matriz[0, 2] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 4 && matriz[1, 0] != jogador1 && matriz[1, 0] != jogador2)
+                    {
+                        matriz[1, 0] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 5 && matriz[1, 1] != jogador1 && matriz[1, 1] != jogador2)
+                    {
+                        matriz[1, 1] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 6 && matriz[1, 2] != jogador1 && matriz[1, 2] != jogador2)
+                    {
+                        matriz[1, 2] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 7 && matriz[2, 0] != jogador1 && matriz[2, 0] != jogador2)
+                    {
+                        matriz[2, 0] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 8 && matriz[2, 1] != jogador1 && matriz[2, 1] != jogador2)
+                    {
+                        matriz[2, 1] = jogador;
+                        break;
+                    }
+                    else if (marcacao == 9 && matriz[2, 2] != jogador1 && matriz[2, 2] != jogador2)
+                    {
+                        matriz[2, 2] = jogador;
+                        break;
+                    }
+                    else
+                    {
+                        Console.Write($"Posição já marcada. Ou posição inválida\n" +
+                            $"Jogador {aux}, escolha a posição que deseja marcar: ");
+                        marcacao = int.Parse(Console.ReadLine());
+                    }
+                }
 
                 // Se ganhou
                 if (matriz[0, 0] == jogador && matriz[1, 1] == jogador && matriz[2, 2] == jogador ||
@@ -293,21 +316,21 @@ namespace Aula4
                     break;
                 }
 
-                // Se todos as posições foram preenchidas
-                if (matriz[0, 0] == jogador1 || matriz[0, 0] == jogador2 &&
-                    matriz[0, 1] == jogador1 || matriz[0, 1] == jogador2 &&
-                    matriz[0, 2] == jogador1 || matriz[0, 2] == jogador2 &&
-                    matriz[1, 0] == jogador1 || matriz[1, 0] == jogador2 &&
-                    matriz[1, 1] == jogador1 || matriz[1, 1] == jogador2 &&
-                    matriz[1, 2] == jogador1 || matriz[1, 2] == jogador2 &&
-                    matriz[2, 0] == jogador1 || matriz[2, 0] == jogador2 &&
-                    matriz[2, 1] == jogador1 || matriz[2, 1] == jogador2 &&
-                    matriz[2, 2] == jogador1 || matriz[2, 2] == jogador2)
-                {
-                    break;
-                }
+                // Se todos as posições foram preenchidas (empate)
+                //if (matriz[0, 0] == jogador1 || matriz[0, 0] == jogador2 &&
+                //    matriz[0, 1] == jogador1 || matriz[0, 1] == jogador2 &&
+                //    matriz[0, 2] == jogador1 || matriz[0, 2] == jogador2 &&
+                //    matriz[1, 0] == jogador1 || matriz[1, 0] == jogador2 &&
+                //    matriz[1, 1] == jogador1 || matriz[1, 1] == jogador2 &&
+                //    matriz[1, 2] == jogador1 || matriz[1, 2] == jogador2 &&
+                //    matriz[2, 0] == jogador1 || matriz[2, 0] == jogador2 &&
+                //    matriz[2, 1] == jogador1 || matriz[2, 1] == jogador2 &&
+                //    matriz[2, 2] == jogador1 || matriz[2, 2] == jogador2)
+                //{
+                //    break;
+                //}
 
-                // trocar jogador
+                // Trocar jogador
                 if (aux == 1)
                     aux = 2;
                 else if (aux == 2)
@@ -321,26 +344,8 @@ namespace Aula4
 
             Console.ReadLine();
         }
-
         static void Main(string[] args)
-        {
-            /*
-            int[,] matriz = new int[3, 3];
-
-            int[,] m;
-
-            int[,] mat = { };
-
-            int[,] matr = new int[2, 2] { { 1, 3 }, { 4, 5 } };
-
-            string[] nomes = new string[3] { "Maria", "Theresa", "FERREIRA" };
-
-            foreach(string nome in nomes)
-            {
-                Console.WriteLine(nome);
-            }
-            */
-
+        {            
             Aula04_05();
             Console.ReadLine();
         }
