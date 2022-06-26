@@ -1,0 +1,8 @@
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\bin\Debug\Aula7.exe.config
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\bin\Debug\Aula7.exe
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\bin\Debug\Aula7.pdb
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\obj\Debug\Aula7.csproj.AssemblyReference.cache
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\obj\Debug\Aula7.csproj.SuggestedBindingRedirects.cache
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\obj\Debug\Aula7.csproj.CoreCompileInputs.cache
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\obj\Debug\Aula7.exe
+C:\Users\maria\Documents\Blue EdTech - RDI - C#\ExerciciosCodingGirls\Aula7\obj\Debug\Aula7.pdb
