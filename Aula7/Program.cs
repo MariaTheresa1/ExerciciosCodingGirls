@@ -102,12 +102,145 @@ namespace Aula7
 
     // 3. Conta Bancária
     // Crie uma classe Conta Bancária que possua os seguintes atributos: número da conta,
-    // nome do cliente e saldo privados.Além dos métodos de get para os atributos crie um
+    // nome do cliente e saldo privados. Além dos métodos de get para os atributos crie um
     // método para alterar o nome, realizar depósitos e saques. Também construa um construtor
     // onde saldo é opcional, com valor default zero, já os demais atributos são obrigatórios.
     public class ContaBancaria
     {
+        private int numero;
+        private string nome;
+        private float saldo;
 
+        public int Numero { get { return numero; } set { numero = value; } }
+        public string Nome { get { return nome; } set { nome = value; } }
+        public float Saldo { get { return saldo; } set { saldo = value; } }
+
+        public ContaBancaria()
+        {
+            List<ContaBancaria> contas = new List<ContaBancaria>();
+            Menu(contas);
+        }
+
+        public ContaBancaria(int numero, string nome)
+        {
+            this.numero = numero;
+            this.nome = nome;
+            saldo = 0;
+        }
+        public List<ContaBancaria> AlterarNome(List<ContaBancaria> contas)
+        {
+            Console.Write("Informe o número da conta que deseja alterar o nome: ");
+            int numero = int.Parse(Console.ReadLine());
+
+            foreach (ContaBancaria i in contas)
+            {
+                if(numero == i.Numero)
+                {
+                    Console.Write("Informe o novo nome: ");
+                    string nome = Console.ReadLine();
+                    i.Nome = nome;
+                    Console.WriteLine("Nome alterado com sucesso.");
+                    return contas;
+                }                
+            }
+            Console.WriteLine("A conta com o número informado não foi encontrada.\n");
+            return contas;
+        }
+        public List<ContaBancaria> RealizarDeposito(List<ContaBancaria> contas)
+        {
+            Console.Write("Informe o número da conta que deseja realizar o depósito: ");
+            int numero = int.Parse(Console.ReadLine());
+
+            foreach (ContaBancaria i in contas)
+            {
+                if (numero == i.Numero)
+                {
+                    Console.Write("Informe o depósito: ");
+                    float deposito = float.Parse(Console.ReadLine());
+                    i.Saldo += deposito;
+                    Console.WriteLine("Depósito realizado com sucesso.");
+                    return contas;
+                }
+            }
+            Console.WriteLine("A conta com o número informado não foi encontrada.\n");
+            return contas;
+        }
+        public List<ContaBancaria> RealizarSaque(List<ContaBancaria> contas)
+        {
+            Console.Write("Informe o número da conta que deseja realizar o saque: ");
+            int numero = int.Parse(Console.ReadLine());
+
+            foreach (ContaBancaria i in contas)
+            {
+                if (numero == i.Numero)
+                {
+                    Console.Write("Informe o saque: ");
+                    float saque = float.Parse(Console.ReadLine());
+                    i.Saldo -= saque;
+                    Console.WriteLine("Saque realizado com sucesso.");
+                    return contas;
+                }
+            }
+            Console.WriteLine("A conta com o número informado não foi encontrada.\n");
+            return contas;
+        }
+        public List<ContaBancaria> AdicionarConta(List<ContaBancaria> contas)
+        {
+            Console.WriteLine("\n----------- Adicionar uma conta -----------");
+            Console.Write("Informe o número da conta: ");
+            int numero = int.Parse(Console.ReadLine());
+            Console.Write("Informe o nome do titular da conta: ");
+            string nome = Console.ReadLine();
+
+            contas.Add(new ContaBancaria(numero, nome));
+
+            return contas;
+        }
+        public void ListarTodasAsContas(List<ContaBancaria> contas)
+        {
+            Console.WriteLine("\n----------- Contas cadastradas -----------");
+            foreach (ContaBancaria i in contas)
+            {
+                Console.WriteLine($"Número: {i.Numero}");
+                Console.WriteLine($"Nome: {i.Nome}");
+                Console.WriteLine($"Saldo: {i.Saldo}");
+                Console.WriteLine();
+            }
+        }
+        public void Menu(List<ContaBancaria> contas)
+        {
+            int opcao;
+            do
+            {
+                Console.Write("MENU\n1 - Cadastrar conta\n2 - Alterar nome\n3 - Realizar Saque\n4 " +
+                    "- Realizar Deposito\n5 - Listar todas as contas\n0 - Sair\nDigite uma opção: ");
+                opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        contas = AdicionarConta(contas);
+                        break;
+                    case 2:
+                        AlterarNome(contas);
+                        break;
+                    case 3:
+                        RealizarSaque(contas);
+                        break;
+                    case 4:
+                        RealizarDeposito(contas);
+                        break;
+                    case 5:
+                        ListarTodasAsContas(contas);
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida, tente novamente.");
+                        break;
+                }
+            } while (opcao != 0);
+        }
     }
 
     internal class Program
@@ -115,10 +248,10 @@ namespace Aula7
         static void Main(string[] args)
         {
             // 1.
-            Aluno aluninhos = new Aluno();
+            //Aluno aluninhos = new Aluno();
 
             // 3. 
-
+            ContaBancaria continhas = new ContaBancaria();
 
             Console.ReadLine();
         }
