@@ -234,6 +234,7 @@ namespace Aula7
                         ListarTodasAsContas(contas);
                         break;
                     case 0:
+
                         break;
                     default:
                         Console.WriteLine("Opção inválida, tente novamente.");
